@@ -1,5 +1,5 @@
 """
-Finds a possible solution (if there is at least one) for a sudoku problem.
+Finds a possible solution (if there is one) for a sudoku problem.
 
 Given: input file 'board' with the board initial configuration.
 Empty positions should be filled with zeros.
