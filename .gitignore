@@ -130,3 +130,6 @@ dmypy.json
 
 # ipython notebooks
 *.ipynb
+
+# images
+# *.svg
