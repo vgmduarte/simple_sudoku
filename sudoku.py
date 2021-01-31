@@ -13,15 +13,6 @@ from copy import copy
 import sys
 
 
-def get_empty_positions(board):
-    empty_positions=[]
-    for i in range(9):
-        for j in range(9):
-            if board[i][j]==0:
-                empty_positions.append([i,j])
-    return empty_positions
-
-
 def found_duplicates(row):
     occurrencies=[0]*10
     for i in range(9):
