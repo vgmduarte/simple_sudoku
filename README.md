@@ -1,6 +1,6 @@
 # simple_sudoku
 
-Finds a possible solution for a sudoku problem, using native python libraries exclusively.
+A [backtracking](https://en.wikipedia.org/wiki/Backtracking) sudoku solver.
 
 ### files
 - `sudoku.py`: the proper code.
