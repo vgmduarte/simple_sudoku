@@ -10,7 +10,17 @@ Empty positions should be filled with zeros.
 
 
 from copy import copy
-import sys
+from time import time
+
+
+class Node:
+    def __init__(self, board, parent=None):
+        self.board=board
+        self.parent=parent
+        self.children=[]
+        if parent:
+            parent.children.append(self)
+        self.is_solution=False
 
 
 def found_duplicates(row):
@@ -38,15 +48,6 @@ def is_valid(board):
     return True
 
 
-class Node:
-    def __init__(self, board, parent=None):
-        self.board=board
-        self.parent=parent
-        self.children=[]
-        if parent:
-            parent.children.append(self)
-
-
 def bprint(board):
     for i in range(9):
         print('')
@@ -64,6 +65,7 @@ def get_next_empty_position(board):
         for j in range(9):
             if board[i][j] == 0:
                 return [i,j]
+    return None
 
 
 def bcopy(board):
@@ -77,24 +79,34 @@ def expand(node):
     position = get_next_empty_position(node.board)
     if position:
         [i,j] = position
+        for number in range(1, 10):
+            board=bcopy(node.board)
+            board[i][j]=number
+            if is_valid(board):
+                Node(board,parent=node);
     else:
-        sys.exit()
-    for number in range(1, 10):
-        board=bcopy(node.board)
-        board[i][j]=number
-        if is_valid(board):
-            Node(board,parent=node);
+        node.is_solution=True
 
 
 def search(node):
     bprint(node.board)
     expand(node)
+    if node.is_solution:
+        return node
     for child in node.children:
-        search(child)
+        capture=search(child)
+        if capture:
+            return capture
 
 
 if __name__ == '__main__':
+    start=time()
+
     exec(open('board').read())
     root=Node(board)
-    search(root)
- 
+    node=search(root)
+    print('\nSolution: ')
+    bprint(node.board)
+
+    end=time()
+    print(f'Execution time: {end-start:.2f} seconds.')
