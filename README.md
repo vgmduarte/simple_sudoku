@@ -1,6 +1,6 @@
 # simple_sudoku
 
-Implementation of the [backtracking algorithm](https://en.wikipedia.org/wiki/Backtracking) for sudoku.
+A [backtracking](https://en.wikipedia.org/wiki/Backtracking) sudoku solver.
 
 ### files
 - `sudoku.py`: the proper code.
