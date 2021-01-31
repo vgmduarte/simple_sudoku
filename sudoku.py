@@ -9,6 +9,7 @@ Empty positions should be filled with zeros.
 # coding: utf-8
 
 
+import os, sys
 from copy import copy
 from time import time
 
@@ -48,18 +49,6 @@ def is_valid(board):
     return True
 
 
-def bprint(board):
-    for i in range(9):
-        print('')
-        for j in range(9):
-            number=board[i][j]
-            if number == 0:
-                print(' ', end=' ')
-            else:
-                print(number, end=' ')
-    print('\n')
-
-
 def get_next_empty_position(board):
     for i in range(9):
         for j in range(9):
@@ -93,20 +82,55 @@ def search(node):
     expand(node)
     if node.is_solution:
         return node
+    else:
+        delete_output()
     for child in node.children:
         capture=search(child)
         if capture:
             return capture
 
 
+def bprint(board):
+    bp='- - - - - - - - - - - - -'
+    for i in range(9):
+        if i in [3,6]:
+            bp+='\n- - - - - - - - - - - - -'
+            # print('\n= = = = = = = = = = =')
+        # elif i > 0:
+        #     bp+='\n'
+        bp+='\n|'
+        for j in range(9):
+            number=board[i][j]
+            if number == 0:
+                bp+='  '
+            else:
+                bp+=f' {number}'
+            if j in [2,5]:
+                bp+=' |'
+        bp+=' |'
+    bp+='\n- - - - - - - - - - - - -'
+    print(bp)
+
+
+def delete_output():
+    for _ in range(13):
+        #cursor up one line
+        sys.stdout.write('\x1b[1A')
+        #delete last line
+        sys.stdout.write('\x1b[2K')
+
+
 if __name__ == '__main__':
     start=time()
 
     exec(open('board').read())
+
     root=Node(board)
+    print('Puzzle')
+    bprint(root.board)
+
+    print('\n\nSolution')
     node=search(root)
-    print('\nSolution: ')
-    bprint(node.board)
 
     end=time()
-    print(f'Execution time: {end-start:.2f} seconds.')
+    print(f'\n\nExecution time: {end-start:.2f} seconds.')
