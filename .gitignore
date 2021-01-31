@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # ipython notebooks
-.ipynb
+*.ipynb
