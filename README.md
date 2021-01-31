@@ -4,7 +4,7 @@ Finds a possible solution for a sudoku problem, using native python libraries ex
 
 ### files
 - `sudoku.py`: the proper code.
-- `board`: text file containing the initial configuration of the board).
+- `board`: text file containing the initial configuration of the board.
 
 ### usage
 Setup the `board` file following the given example and run `python sudoku.py`.
