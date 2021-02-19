@@ -7,7 +7,7 @@ A [backtracking](https://en.wikipedia.org/wiki/Backtracking) sudoku solver.
 - `board`: text file containing the initial configuration of the board.
 
 ### usage
-Setup `board` according to the example and run `$ python sudoku.py`.
+Setup `board` according to the example and run `sudoku.py`.
 
 ### example
 ![](example.gif)
