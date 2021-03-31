@@ -1,6 +1,6 @@
 # simple_sudoku
 
-A [backtracking](https://en.wikipedia.org/wiki/Backtracking) sudoku solver.
+[Backtracking](https://en.wikipedia.org/wiki/Backtracking) sudoku solver.
 
 A sudoku board is described as a list of lists. Zeros represent empty squares.
 
