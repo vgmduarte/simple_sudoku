@@ -95,9 +95,6 @@ def bprint(board):
     for i in range(9):
         if i in [3,6]:
             bp+='\n- - - - - - - - - - - - -'
-            # print('\n= = = = = = = = = = =')
-        # elif i > 0:
-        #     bp+='\n'
         bp+='\n|'
         for j in range(9):
             number=board[i][j]
@@ -120,11 +117,19 @@ def delete_output():
         sys.stdout.write('\x1b[2K')
 
 
+def read_board():
+    with open('board') as file:
+        lines=file.readlines()
+    board=[]
+    for line in lines:
+        board.append([int(n) for n in line.split(' ')])
+    return board
+
+
 if __name__ == '__main__':
     start=time()
 
-    exec(open('board').read())
-
+    board=read_board()
     root=Node(board)
     print('Puzzle')
     bprint(root.board)
