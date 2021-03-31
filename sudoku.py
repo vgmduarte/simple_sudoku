@@ -9,7 +9,7 @@ Empty positions should be filled with zeros.
 # coding: utf-8
 
 
-import os, sys
+import sys
 from copy import copy
 from time import time
 
@@ -117,25 +117,27 @@ def delete_output():
         sys.stdout.write('\x1b[2K')
 
 
-def read_board():
-    with open('board') as file:
-        lines=file.readlines()
-    board=[]
-    for line in lines:
-        board.append([int(n) for n in line.split(' ')])
-    return board
-
-
 if __name__ == '__main__':
     start=time()
 
-    board=read_board()
+    board=[
+        [9, 0, 0, 7, 0, 0, 0, 0, 0],
+        [0, 0, 0, 5, 1, 0, 3, 0, 0],
+        [0, 5, 4, 0, 0, 0, 0, 9, 0],
+        [0, 7, 0, 0, 3, 1, 0, 8, 5],
+        [1, 0, 0, 0, 9, 0, 0, 0, 0],
+        [0, 0, 0, 0, 6, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 8, 9, 0, 6],
+        [7, 2, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 2, 0, 0, 3]
+    ]
+
     root=Node(board)
     print('Puzzle')
     bprint(root.board)
 
-    print('\n\nSolution')
+    print('\nSolution')
     node=search(root)
 
     end=time()
-    print(f'\n\nExecution time: {end-start:.2f} seconds.')
+    print(f'\nExecution time: {end-start:.2f} seconds.')
