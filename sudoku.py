@@ -1,8 +1,5 @@
 """
 Finds a possible solution (if there is one) for a sudoku problem.
-
-Given: input file 'board' with the board initial configuration.
-Empty positions should be filled with zeros.
 """
 
 #!/usr/bin/env python
@@ -120,6 +117,8 @@ def delete_output():
 if __name__ == '__main__':
     start=time()
 
+    # set the initial sudoku board here
+    # empty spots should be filled with zeros
     board=[
         [9, 0, 0, 7, 0, 0, 0, 0, 0],
         [0, 0, 0, 5, 1, 0, 3, 0, 0],
